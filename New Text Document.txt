@@ -1,0 +1,14 @@
+https://www.mathworks.com/help/vision/examples/image-category-classification-using-bag-of-features.html#responsive_offcanvas
+
+
+https://www.youtube.com/watch?v=g8D5YL6cOSE
+
+
+https://stats.stackexchange.com/questions/206909/linear-svm-feature-weights-interpretation-binary-classification-only-positive
+
+
+http://scikit-learn.org/stable/modules/svm.html#svm-kernels
+
+https://pythonprogramming.net/linear-svc-example-scikit-learn-svm-python/
+
+http://web.mit.edu/6.034/wwwbob/svm-notes-long-08.pdf

@@ -1,0 +1,101 @@
+from math import exp
+import numpy as np
+import numpy 
+from matplotlib import pyplot as plt
+import operator
+
+x=0
+y=0
+k=[]
+ty=[]
+c=0
+dict1={}
+dict2={}
+mt=np.array(mazee)     ##main matrix
+nt=np.array(mazee)     ##probability matrix
+def neigh(x,y):
+    if x < (len(mazee)-1):
+            k.append((x+1,y))        
+    if x >0:
+            k.append((x-1,y))
+    if y<(len(mazee)- 1):
+            k.append((x,y+1))
+
+    if y >0:
+            k.append((x,y-1))
+    return k
+def formdictionary(k):          
+    i=0
+    while(i<len(k)):       ## k consisit of co-ordinates neighbours
+        t,p=k[i]
+        val=nt.item(t,p)  ##value of the matrix
+        dict2={(t,p):val}##value of cells and co-ordinates
+        dict1.update(dict2)
+        i=i+1    
+    return dict1
+##count zero's and G
+i=0
+j=0
+for i in range(37):
+    for j in range(37):
+        if mt.item(i,j)=="G" or int(mt.item(i,j))==0:
+            c=c+1
+
+
+###probability matrix
+prob=float(1/(c))
+
+for i in range(37):
+    for j in range(37):
+        if mt.item(i,j)=="G" or int(mt.item(i,j))==0:
+            nt[i,j]=prob
+
+
+##traversing
+def calculateprob(f,g,prob):
+    nt[f,g]=-5
+    mt[f,g]=-5
+    k=neigh(f,g)
+    dictio=formdictionary(k)
+    sorted_x = sorted(dictio.items(), key=operator.itemgetter(1),reverse=True)
+    print(sorted_x)    
+    x1,x2=sorted_x[0][0]
+    val=sorted_x[0][1]
+    count=0
+    for i in range(37):
+        for j in range(37):
+            if mt.item(i,j)=="G" or int(mt.item(i,j))==0:
+                count=count+1
+    print(val)
+    print(count)
+    print(prob)
+    updaprob=float(val)/(count)
+    prob=prob+updaprob
+    
+    for i in range(37):
+        for j in range(37):
+            if mt.item(i,j)=="G" or int(mt.item(i,j))==0:
+                nt[i,j]=prob
+    print(x1,x2)
+    if mt.item(x1,x2)=="G":
+        print("found")
+    else:
+        calculateprob(x1,x2,prob)
+        
+
+
+calculateprob(0,0,prob)
+
+
+
+
+
+
+
+
+
+
+print(np.matrix(mt))
+print(np.matrix(nt))  
+     
+     
